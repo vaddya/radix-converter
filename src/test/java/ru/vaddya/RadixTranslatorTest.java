@@ -48,4 +48,14 @@ public class RadixTranslatorTest {
 
         assertEquals("ae", translator.translate(number, baseRadix, finalRadix));
     }
+
+    @Test
+    public void test() {
+        Parser parser = new Parser();
+        int baseRadix = 2;
+        int finalRadix = 10;
+        String number = "1110010";
+
+        assertEquals(174, parser.parse(number, baseRadix));
+    }
 }
