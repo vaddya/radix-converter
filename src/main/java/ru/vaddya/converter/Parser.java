@@ -1,13 +1,17 @@
 package ru.vaddya.converter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class Parser {
+public class Parser {
     private static final char DELIMITER = ',';
     private static final Map<Character, Integer> CHARACTER_MAP;
+
     static {
         CHARACTER_MAP = new HashMap<>(16);
-        Character[] chars = { '0', '1', '2', '3', '4', '5', '6', '7',
+        Character[] chars = {'0', '1', '2', '3', '4', '5', '6', '7',
                 '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
         for (int i = 0; i < 16; i++) {
@@ -28,7 +32,6 @@ class Parser {
         if (indexOfDel == -1) {
             indexOfDel = number.length();
         }
-
         for (int i = 0; i < indexOfDel; i++) {
             integerPart.add(0, CHARACTER_MAP.get(number.charAt(i)));
         }

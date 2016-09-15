@@ -3,21 +3,20 @@ package ru.vaddya.converter;
 import java.util.ArrayList;
 
 public class RadixConverter {
-
     public static void main(String[] args) {
         if (args.length == 3) {
             RadixConverter translator = new RadixConverter();
             int baseRadix = Integer.parseInt(args[1]);
             int finalRadix = Integer.parseInt(args[2]);
-
             System.out.println(translator.translate(args[0], baseRadix, finalRadix));
         } else {
-            System.out.println("Use 3 arguments: number, base radix and final radix!");
+            System.out.println("Use 3 arguments: <number>, <base radix> and <final radix>!");
         }
     }
 
-    Parser parser = new Parser();
-    Composer composer = new Composer();
+    private static final int ACCURACY = 8;
+    private Parser parser = new Parser();
+    private Composer composer = new Composer();
 
     public String translate(String number, int baseRadix, int finalRadix) {
         parser.parse(number);
@@ -47,15 +46,15 @@ public class RadixConverter {
         double numberInDecimal = 0.0;
         int powerOfBaseRadix = baseRadix;
         for (int value : parser.getFractionalPart()) {
-            numberInDecimal += (double)value / powerOfBaseRadix;
+            numberInDecimal += (double) value / powerOfBaseRadix;
             powerOfBaseRadix *= baseRadix;
         }
 
         ArrayList<Integer> fractionalPart = new ArrayList<>();
-        int accuracy = 8;
+        int accuracy = ACCURACY;
         while (accuracy > 0 && numberInDecimal != 0) {
             numberInDecimal *= finalRaix;
-            int diff = (int)(numberInDecimal);
+            int diff = (int) (numberInDecimal);
             fractionalPart.add(diff);
             numberInDecimal -= diff;
             accuracy--;
