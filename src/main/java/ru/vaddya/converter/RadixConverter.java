@@ -42,7 +42,7 @@ public class RadixConverter {
         return integerPart;
     }
 
-    private ArrayList<Integer> convertFractionalPart(String number, int baseRadix, int finalRaix) {
+    private ArrayList<Integer> convertFractionalPart(String number, int baseRadix, int finalRadix) {
         double numberInDecimal = 0.0;
         int powerOfBaseRadix = baseRadix;
         for (int value : parser.getFractionalPart()) {
@@ -53,7 +53,7 @@ public class RadixConverter {
         ArrayList<Integer> fractionalPart = new ArrayList<>();
         int accuracy = ACCURACY;
         while (accuracy > 0 && numberInDecimal != 0) {
-            numberInDecimal *= finalRaix;
+            numberInDecimal *= finalRadix;
             int diff = (int) (numberInDecimal);
             fractionalPart.add(diff);
             numberInDecimal -= diff;
