@@ -1,12 +1,10 @@
-package ru.vaddya;
+package ru.vaddya.converter;
 
 import org.junit.Test;
+import ru.vaddya.converter.RadixConverter;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Vadim on 9/12/2016.
- */
 public class RadixConverterTest {
 
     @Test
@@ -16,7 +14,17 @@ public class RadixConverterTest {
         int finalRadix = 10;
         String number = "1110010";
 
-        //assertEquals("114", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("114", translator.translate(number, baseRadix, finalRadix));
+    }
+
+    @Test
+    public void test2to8() {
+        RadixConverter translator = new RadixConverter();
+        int baseRadix = 2;
+        int finalRadix = 8;
+        String number = "1110011";
+
+        assertEquals("163", translator.translate(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -26,7 +34,7 @@ public class RadixConverterTest {
         int finalRadix = 2;
         String number = "114";
 
-        //assertEquals("1110010", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("1110010", translator.translate(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -34,7 +42,7 @@ public class RadixConverterTest {
         RadixConverter translator = new RadixConverter();
         int baseRadix = 16;
         int finalRadix = 10;
-        String number = "ae";
+        String number = "AE";
 
         assertEquals("174", translator.translate(number, baseRadix, finalRadix));
     }
@@ -46,16 +54,6 @@ public class RadixConverterTest {
         int finalRadix = 16;
         String number = "174";
 
-        //assertEquals("ae", translator.translate(number, baseRadix, finalRadix));
-    }
-
-    @Test
-    public void test() {
-        RadixConverter translator = new RadixConverter();
-        int baseRadix = 2;
-        int finalRadix = 10;
-        String number = "1110010";
-
-        //assertEquals(174, translator.translate(number, baseRadix, finalRadix));
+        assertEquals("AE", translator.translate(number, baseRadix, finalRadix));
     }
 }

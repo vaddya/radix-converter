@@ -1,4 +1,4 @@
-package ru.vaddya;
+package ru.vaddya.converter;
 
 import java.util.ArrayList;
 
@@ -21,33 +21,9 @@ public class RadixConverter {
 
     public String translate(String number, int baseRadix, int finalRadix) {
         parser.parse(number);
-        System.out.println(parser.getIntegerPart());
-        System.out.println(parser.getFractionalPart());
 
-        System.out.println(convertIntegerPart(number, baseRadix, finalRadix));
-
-//        double numberInDecimal = 0;
-//        int powerOfBaseRadix = 1;
-//        for (int value : parser.getIntegerPart()) {
-//            numberInDecimal += value * powerOfBaseRadix;
-//            powerOfBaseRadix *= baseRadix;
-//        }
-//
-//        powerOfBaseRadix = baseRadix;
-//        for (int value : parser.getFractionalPart()) {
-//            numberInDecimal += (double)value / powerOfBaseRadix;
-//            powerOfBaseRadix *= baseRadix;
-//        }
-//
-//        StringBuilder numberInFinalRadix = new StringBuilder();
-//        while ()
-//
-//        return String.valueOf(numberInDecimal);
-
-
-//        int result = Integer.parseInt(number, baseRadix);
-//        return Integer.toString(result, finalRadix);
-        return null;
+        return composer.compose(convertIntegerPart(number, baseRadix, finalRadix),
+                convertFractionalPart(number, baseRadix, finalRadix));
     }
 
     private ArrayList<Integer> convertIntegerPart(String number, int baseRadix, int finalRadix) {
@@ -77,12 +53,14 @@ public class RadixConverter {
 
         ArrayList<Integer> fractionalPart = new ArrayList<>();
         int accuracy = 8;
-        while (accuracy > 0) {
+        while (accuracy > 0 && numberInDecimal != 0) {
             numberInDecimal *= finalRaix;
-            fractionalPart.add((int)(numberInDecimal));
+            int diff = (int)(numberInDecimal);
+            fractionalPart.add(diff);
+            numberInDecimal -= diff;
             accuracy--;
         }
 
-        return fractionalPart
+        return fractionalPart;
     }
 }
