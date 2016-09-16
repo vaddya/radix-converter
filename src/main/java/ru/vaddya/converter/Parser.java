@@ -2,11 +2,10 @@ package ru.vaddya.converter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Parser {
-    private static final char DELIMITER = ',';
+
     private static final Map<Character, Integer> CHARACTER_MAP;
 
     static {
@@ -19,32 +18,28 @@ public class Parser {
         }
     }
 
-    Parser() {
-        integerPart = new ArrayList<>();
-        fractionalPart = new ArrayList<>();
-    }
+    private ArrayList<Integer> intPart = new ArrayList<>();
 
-    private ArrayList<Integer> integerPart;
-    private ArrayList<Integer> fractionalPart;
+    private ArrayList<Integer> fracPart = new ArrayList<>();
 
-    void parse(String number) {
-        int indexOfDel = number.indexOf(DELIMITER);
+    public void parse(String number, char delimiter) {
+        int indexOfDel = number.indexOf(delimiter);
         if (indexOfDel == -1) {
             indexOfDel = number.length();
         }
         for (int i = 0; i < indexOfDel; i++) {
-            integerPart.add(0, CHARACTER_MAP.get(number.charAt(i)));
+            intPart.add(0, CHARACTER_MAP.get(number.charAt(i)));
         }
         for (int i = indexOfDel + 1; i < number.length(); i++) {
-            fractionalPart.add(CHARACTER_MAP.get(number.charAt(i)));
+            fracPart.add(CHARACTER_MAP.get(number.charAt(i)));
         }
     }
 
-    public List<Integer> getIntegerPart() {
-        return integerPart;
+    public ArrayList<Integer> getIntPart() {
+        return intPart;
     }
 
-    public List<Integer> getFractionalPart() {
-        return fractionalPart;
+    public ArrayList<Integer> getFracPart() {
+        return fracPart;
     }
 }

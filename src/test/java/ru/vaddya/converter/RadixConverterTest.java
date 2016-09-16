@@ -13,7 +13,7 @@ public class RadixConverterTest {
         int finalRadix = 8;
         String number = "1110011,1011";
 
-        assertEquals("163,54", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("163,54", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class RadixConverterTest {
         int finalRadix = 10;
         String number = "1110010,101";
 
-        assertEquals("114,625", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("114,625", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class RadixConverterTest {
         int finalRadix = 16;
         String number = "11110011,100101";
 
-        assertEquals("F3,94", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("F3,94", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class RadixConverterTest {
         int finalRadix = 10;
         String number = "407,7";
 
-        assertEquals("263,875", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("263,875", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class RadixConverterTest {
         int finalRadix = 2;
         String number = "114";
 
-        assertEquals("1110010", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("1110010", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class RadixConverterTest {
         int finalRadix = 16;
         String number = "174,5";
 
-        assertEquals("AE,8", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("AE,8", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class RadixConverterTest {
         int finalRadix = 2;
         String number = "1E,2F";
 
-        assertEquals("11110,00101111", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("11110,00101111", translator.convert(number, baseRadix, finalRadix));
     }
 
     @Test
@@ -83,6 +83,6 @@ public class RadixConverterTest {
         int finalRadix = 10;
         String number = "AE";
 
-        assertEquals("174", translator.translate(number, baseRadix, finalRadix));
+        assertEquals("174", translator.convert(number, baseRadix, finalRadix));
     }
 }
