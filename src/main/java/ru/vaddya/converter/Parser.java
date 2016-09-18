@@ -22,7 +22,7 @@ public class Parser {
 
     private ArrayList<Integer> fracPart = new ArrayList<>();
 
-    public void parse(String number, char delimiter) {
+    public Parser(String number, char delimiter) {
         int indexOfDel = number.indexOf(delimiter);
         if (indexOfDel == -1) {
             indexOfDel = number.length();

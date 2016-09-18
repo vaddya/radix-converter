@@ -34,11 +34,9 @@ public class RadixConverter {
     private static final char DELIMITER = ',';
 
     public String convert(String number, int baseRadix, int finalRadix) {
-        Parser parser = new Parser();
-        Composer composer = new Composer();
+        Parser parser = new Parser(number, DELIMITER);
 
-        parser.parse(number, DELIMITER);
-        return composer.compose(
+        return Composer.compose(
                 convertIntPart(parser.getIntPart(), baseRadix, finalRadix),
                 convertFracPart(parser.getFracPart(), baseRadix, finalRadix),
                 DELIMITER
@@ -46,8 +44,8 @@ public class RadixConverter {
     }
 
     private ArrayList<Integer> convertIntPart(ArrayList<Integer> intPart, int baseRadix, int finalRadix) {
-        int numberInDecimal = 0;
-        int powerOfBaseRadix = 1;
+        long numberInDecimal = 0;
+        long powerOfBaseRadix = 1;
         for (int value : intPart) {
             numberInDecimal += value * powerOfBaseRadix;
             powerOfBaseRadix *= baseRadix;
@@ -55,17 +53,17 @@ public class RadixConverter {
 
         ArrayList<Integer> integerPart = new ArrayList<>();
         while (numberInDecimal != 0) {
-            integerPart.add(0, numberInDecimal % finalRadix);
+            integerPart.add(0, (int) (numberInDecimal % finalRadix));
             numberInDecimal /= finalRadix;
         }
 
         return integerPart;
     }
 
-    private ArrayList<Integer> convertFracPart(ArrayList<Integer> fracList, int baseRadix, int finalRadix) {
+    private ArrayList<Integer> convertFracPart(ArrayList<Integer> fracPart, int baseRadix, int finalRadix) {
         double numberInDecimal = 0.0;
-        int powerOfBaseRadix = baseRadix;
-        for (int value : fracList) {
+        long powerOfBaseRadix = baseRadix;
+        for (int value : fracPart) {
             numberInDecimal += (double) value / powerOfBaseRadix;
             powerOfBaseRadix *= baseRadix;
         }

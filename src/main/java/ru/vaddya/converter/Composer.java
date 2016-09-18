@@ -18,7 +18,7 @@ public class Composer {
         }
     }
 
-    public String compose(ArrayList<Integer> integerPart, ArrayList<Integer> fractionalPart, char delimiter) {
+    public static String compose(ArrayList<Integer> integerPart, ArrayList<Integer> fractionalPart, char delimiter) {
         StringBuilder sb = new StringBuilder();
         if (integerPart.isEmpty()) {
             sb.append('0');
