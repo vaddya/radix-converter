@@ -30,7 +30,6 @@ public class RadixConverter {
     }
 
     private static final int ACCURACY = 8;
-
     private static final char DELIMITER = ',';
 
     public String convert(String number, int baseRadix, int finalRadix) {

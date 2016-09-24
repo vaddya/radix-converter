@@ -19,7 +19,6 @@ public class Parser {
     }
 
     private ArrayList<Integer> intPart = new ArrayList<>();
-
     private ArrayList<Integer> fracPart = new ArrayList<>();
 
     public Parser(String number, char delimiter) {
