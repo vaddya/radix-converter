@@ -1,0 +1,14 @@
+language: generic
+
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+
+install:
+  - docker pull lamtev/java
+
+script:
+  - docker run -v $TRAVIS_BUILD_DIR:/radix-converter lamtev/java /bin/bash -c " cd radix-converter && gradle build "
